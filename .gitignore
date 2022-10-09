@@ -21,3 +21,6 @@ typings/
 
 # My Entries
 00 diagrams/
+.vscode/
+.cache/
+dist/
