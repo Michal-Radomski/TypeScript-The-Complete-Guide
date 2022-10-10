@@ -25,3 +25,4 @@ typings/
 .cache/
 dist/
 config.ts
+build/
