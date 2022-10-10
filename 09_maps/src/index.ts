@@ -1,3 +1,5 @@
+/// <reference types="@types/google.maps" />
+
 // console.log("test");
 
 import { User } from "./User";
@@ -8,3 +10,8 @@ console.log({ user });
 
 const company = new Company();
 console.log({ company });
+
+new google.maps.Map(document.getElementById("map") as HTMLDivElement, {
+  zoom: 1,
+  center: { lat: 0, lng: 0 },
+});
