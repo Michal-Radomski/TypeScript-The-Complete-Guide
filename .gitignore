@@ -24,4 +24,4 @@ typings/
 .vscode/
 .cache/
 dist/
-config.js
+config.ts
