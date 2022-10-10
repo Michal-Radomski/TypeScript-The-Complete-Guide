@@ -1,10 +1,14 @@
 //* typeof => primitive values: numbers, string, boolean, symbol
 //* instanceof => values created with constructor e.g instanceof Array
 
-import { NumbersCollection } from "./NumbersCollection";
+interface Sortable {
+  length: number;
+  compare(leftIndex: number, rightIndex: number): boolean;
+  swap(leftIndex: number, rightIndex: number): void;
+}
 
 export class Sorter {
-  constructor(public collection: NumbersCollection) {
+  constructor(public collection: Sortable) {
     this.collection = collection;
   }
 
