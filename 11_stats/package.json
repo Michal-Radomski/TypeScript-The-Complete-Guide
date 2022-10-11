@@ -1,7 +1,7 @@
 {
-  "name": "10_sorter",
+  "name": "11_stats",
   "version": "1.0.0",
-  "description": "Sort App",
+  "description": "",
   "main": "src/index.ts",
   "scripts": {
     "start:build": "tsc -w",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/node": "^18.8.4",
     "concurrently": "^7.4.0",
     "nodemon": "^2.0.20"
   }
