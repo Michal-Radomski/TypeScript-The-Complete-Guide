@@ -1,14 +1,9 @@
 import { CSV_FileReader } from "./CSV_FileReader";
+import { MatchResult } from "./MatchResult";
 
 const reader = new CSV_FileReader("football.csv");
 reader.read();
 console.log("reader.data:", reader.data);
-
-enum MatchResult {
-  homeWin = "H",
-  awayWin = "A",
-  draw = "D",
-}
 
 let manUnitedWins = 0;
 let manUnitedDraws = 0;
