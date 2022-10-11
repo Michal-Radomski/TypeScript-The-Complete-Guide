@@ -1,16 +1,20 @@
 //* typeof => primitive values: numbers, string, boolean, symbol
 //* instanceof => values created with constructor e.g instanceof Array
 
-interface Sortable {
-  length: number;
-  compare(leftIndex: number, rightIndex: number): boolean;
-  swap(leftIndex: number, rightIndex: number): void;
-}
+// interface Sortable {
+//   length: number;
+//   compare(leftIndex: number, rightIndex: number): boolean;
+//   swap(leftIndex: number, rightIndex: number): void;
+// }
 
-export class Sorter {
-  constructor(public collection: Sortable) {
-    this.collection = collection;
-  }
+export abstract class Sorter {
+  abstract compare(leftIndex: number, rightIndex: number): boolean;
+  abstract swap(leftIndex: number, rightIndex: number): void;
+  abstract length: number;
+
+  // constructor(public collection: Sortable) {
+  //   this.collection = collection;
+  // }
 
   // // - Original Bubble Sort Algorithm
   // sort(): void {
@@ -31,13 +35,13 @@ export class Sorter {
 
   sort(): void {
     // const length = this.collection.length
-    const { length } = this.collection; //* Destructuring
+    const { length } = this; //* Destructuring
 
     //- Bubble Sort Algorithm
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - i - 1; j++) {
-        if (this.collection.compare(j, j + 1)) {
-          this.collection.swap(j, j + 1);
+        if (this.compare(j, j + 1)) {
+          this.swap(j, j + 1);
         }
       }
     }
