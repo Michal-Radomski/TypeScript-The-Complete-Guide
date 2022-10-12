@@ -14,7 +14,7 @@ const holdString = new HoldString();
 holdString.data = "123";
 console.log(holdString);
 
-//* Generics
+//* Generics T-> generics
 class HoldAnything<T> {
   data: T;
   add(a: T): T {
