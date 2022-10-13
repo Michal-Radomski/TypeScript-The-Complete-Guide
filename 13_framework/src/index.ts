@@ -9,12 +9,23 @@ import { User } from "./model/User";
 // user.save();
 const user = new User({ name: "New Record", age: 0 });
 // user.save();
+console.log(user.get("name"));
+user.on("change", () => {
+  console.log("User was changed, HTML should be changed");
+});
 
 user.events.on("change", () => {
   console.log("Change!");
 });
 
-user.events.trigger("change");
+// user.events.trigger("change");
+user.set({ name: "New Name" });
+
+const user2 = new User({ id: 1, name: "newer name", age: 0 });
+user.on("save", () => {
+  console.log({ user2 });
+});
+user2.save();
 
 //* Old versions
 
