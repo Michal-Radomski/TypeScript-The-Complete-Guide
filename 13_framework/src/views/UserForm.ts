@@ -1,24 +1,22 @@
-import { User } from "../model/User";
+import { User, UserProps } from "../model/User";
+import { View } from "./View";
 
-export class UserForm {
-  constructor(public parent: Element, public model: User) {
-    this.bindModel();
-  }
-
-  bindModel(): void {
-    this.model.on("change", () => {
-      this.render();
-    });
-  }
-
+export class UserForm extends View<User, UserProps> {
   eventsMap(): { [key: string]: () => void } {
+    this.model.get("name");
+
     return {
       // "click:button": this.onButtonClick,
       // "mouseenter:h1": this.onHeaderHover,
       "click:.set-age": this.onSetAgeClick,
       "click:.set-name": this.onSetNameClick,
+      "click:.save-model": this.onSaveClick,
     };
   }
+
+  onSaveClick = (): void => {
+    this.model.save();
+  };
 
   // onHeaderHover(): void {
   //   console.log("H1 was hovered over");
@@ -43,37 +41,11 @@ export class UserForm {
   template(): string {
     return `
       <div>
-        <h1>User Form</h1>
-        <div>User name: ${this.model.get("name")}</div>
-        <div>User age: ${this.model.get("age")}</div>
-        <input />
+      <input placeholder="${this.model.get("name")}" />
         <button class="set-name">Change Name</button>
         <button class="set-age">Set Random Age</button>
+        <button class="save-model">Save User</button>
       </div>
     `;
-  }
-
-  bindEvents(fragment: DocumentFragment): void {
-    const eventsMap = this.eventsMap();
-
-    for (let eventKey in eventsMap) {
-      const [eventName, selector] = eventKey.split(":");
-      // console.log(eventName, selector) // click, button
-
-      fragment.querySelectorAll(selector).forEach((element) => {
-        element.addEventListener(eventName, eventsMap[eventKey]);
-      });
-    }
-  }
-
-  render(): void {
-    this.parent.innerHTML = "";
-
-    const templateElement = document.createElement("template");
-    templateElement.innerHTML = this.template();
-
-    this.bindEvents(templateElement.content);
-
-    this.parent.append(templateElement.content);
   }
 }
