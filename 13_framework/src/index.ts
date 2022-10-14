@@ -1,39 +1,45 @@
 // import axios from "axios";
 
-import { User } from "./model/User";
+import { UserForm } from "./views/UserForm";
 
-// const user = new User({ id: 1 });
-// user.fetch();
-// console.log({ user });
-// user.set({ name: "John Doe", age: 27 });
-// user.save();
-// const user = new User({ name: "New Record", age: 0 });
+// import { User } from "./model/User";
+
+const userForm = new UserForm(document.getElementById("root") as HTMLElement);
+
+userForm.render();
+
+// // const user = new User({ id: 1 });
+// // user.fetch();
+// // console.log({ user });
+// // user.set({ name: "John Doe", age: 27 });
 // // user.save();
-// console.log(user.get("name"));
-// user.on("change", () => {
-//   console.log("User was changed, HTML should be changed");
+// // const user = new User({ name: "New Record", age: 0 });
+// // // user.save();
+// // console.log(user.get("name"));
+// // user.on("change", () => {
+// //   console.log("User was changed, HTML should be changed");
+// // });
+
+// // user.events.on("change", () => {
+// //   console.log("Change!");
+// // });
+
+// // // user.events.trigger("change");
+// // user.set({ name: "New Name" });
+
+// // const user2 = new User({ id: 1, name: "newer name", age: 0 });
+// // user.on("save", () => {
+// //   console.log({ user2 });
+// // });
+// // user2.save();
+
+// const collection = User.buildUserCollection();
+
+// collection.on("change", () => {
+//   console.log(collection);
 // });
 
-// user.events.on("change", () => {
-//   console.log("Change!");
-// });
-
-// // user.events.trigger("change");
-// user.set({ name: "New Name" });
-
-// const user2 = new User({ id: 1, name: "newer name", age: 0 });
-// user.on("save", () => {
-//   console.log({ user2 });
-// });
-// user2.save();
-
-const collection = User.buildUserCollection();
-
-collection.on("change", () => {
-  console.log(collection);
-});
-
-collection.fetch();
+// collection.fetch();
 //* Old versions
 
 // axios.post("http://localhost:3000/users", {
