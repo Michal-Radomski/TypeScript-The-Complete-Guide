@@ -5,9 +5,21 @@ import { User } from "./model/User";
 
 const user = User.buildUser({ name: "NAME", age: 20 });
 
-const userForm = new UserForm(document.getElementById("root") as HTMLElement, user);
+// * Options 1 and 2
+// const userForm = new UserForm(document.getElementById("root") as HTMLElement, user);
+// const userForm = new UserForm(document.getElementById("root")!, user);
+// userForm.render();
 
-userForm.render();
+//* Option 3
+const root = document.getElementById("root");
+
+if (root) {
+  const userForm = new UserForm(root, user);
+
+  userForm.render();
+} else {
+  throw new Error("Root element not found");
+}
 
 // const user = new User({ id: 1 });
 // user.fetch();
