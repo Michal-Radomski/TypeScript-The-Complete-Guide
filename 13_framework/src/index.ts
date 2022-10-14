@@ -1,9 +1,26 @@
-// import axios from "axios";
+import { UserList } from "./views/UserList";
+import { Collection } from "./model/Collection";
+import { UserProps, User } from "./model/User";
 
-import { UserForm } from "./views/UserForm";
-import { User } from "./model/User";
+const users = new Collection("http://localhost:3000/users", (json: UserProps) => {
+  return User.buildUser(json);
+});
 
-const user = User.buildUser({ name: "NAME", age: 20 });
+users.on("change", () => {
+  const root = document.getElementById("root");
+
+  if (root) {
+    new UserList(root, users).render();
+  }
+});
+
+users.fetch();
+
+//* Old versions
+// import { UserEdit } from "./views/UserEdit";
+// import { User } from "./model/User";
+
+// const user = User.buildUser({ name: "NAME", age: 20 });
 
 // * Options 1 and 2
 // const userForm = new UserForm(document.getElementById("root") as HTMLElement, user);
@@ -11,15 +28,16 @@ const user = User.buildUser({ name: "NAME", age: 20 });
 // userForm.render();
 
 //* Option 3
-const root = document.getElementById("root");
+// const root = document.getElementById("root");
 
-if (root) {
-  const userForm = new UserForm(root, user);
+// if (root) {
+//   const userEdit = new UserEdit(root, user);
 
-  userForm.render();
-} else {
-  throw new Error("Root element not found");
-}
+//   userEdit.render();
+//   console.log({ userEdit });
+// } else {
+//   throw new Error("Root element not found");
+// }
 
 // const user = new User({ id: 1 });
 // user.fetch();
@@ -53,7 +71,7 @@ if (root) {
 // });
 
 // collection.fetch();
-//* Old versions
+//* Older versions
 
 // axios.post("http://localhost:3000/users", {
 //   name: "Name_3",
