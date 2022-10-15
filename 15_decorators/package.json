@@ -1,0 +1,12 @@
+{
+  "name": "15_decorators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "decorators.ts",
+  "scripts": {
+    "start": "nodemon decorators.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
