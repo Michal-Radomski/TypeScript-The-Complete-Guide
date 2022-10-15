@@ -1,6 +1,9 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import express, { Express, Request, Response } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import cookieSession from "cookie-session";
 
 // Import routes
 import loginRoutes from "./routes/loginRoutes";
@@ -12,6 +15,12 @@ const app: Express = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("combined"));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: [process.env.NODE_SECRET as string],
+  })
+);
 
 //Route middleware
 app.use("/api", loginRoutes);
