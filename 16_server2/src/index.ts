@@ -1,13 +1,12 @@
 import * as dotenv from "dotenv";
 dotenv.config();
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import bodyParser from "body-parser";
 import morgan from "morgan";
 import cookieSession from "cookie-session";
 
 import "./controllers/LoginController";
-// Import routes
-import loginRoutes from "./routes/loginRoutes";
+import "./controllers/RootController";
 import { AppRouter } from "./AppRouter";
 
 // The server
@@ -24,15 +23,6 @@ app.use(
   })
 );
 app.use(AppRouter.getInstance());
-
-//Route middleware
-app.use("/api", loginRoutes);
-
-// Test route
-app.get("/", (req: Request, res: Response) => {
-  console.log("req.ip:", req.ip);
-  res.send("<h1 style='color:blue;text-align:center'>API is running</h1>");
-});
 
 // Port
 const port = (process.env.PORT || 5000) as number;
