@@ -14,17 +14,29 @@ export interface FetchTodosAction {
   payload: Todo[];
 }
 
+export interface DeleteTodoAction {
+  type: ActionTypes.deleteToDo;
+  payload: number;
+}
+
 const url = "https://jsonplaceholder.typicode.com/todos";
 
-export const fetchTodos = () => {
+export const fetchTodos = (): ((dispatch: Dispatch) => Promise<void>) => {
   //* Dispatch better than AppDispatch
   return async (dispatch: Dispatch) => {
     const response = await axios.get<Todo[]>(url);
-    console.log({ response });
+    // console.log({ response });
 
     dispatch<FetchTodosAction>({
       type: ActionTypes.fetchTodos,
       payload: response.data,
     });
+  };
+};
+
+export const deleteTodo = (id: number): DeleteTodoAction => {
+  return {
+    type: ActionTypes.deleteToDo,
+    payload: id,
   };
 };
