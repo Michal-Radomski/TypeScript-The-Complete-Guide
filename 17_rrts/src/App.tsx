@@ -2,16 +2,20 @@ import React from "react";
 
 import "./App.scss";
 
-// function App():JSX.Element {
-//   return <React.Fragment>App</React.Fragment>;
-// }
-
 interface AppProps {
   color?: string;
 }
+interface AppState {
+  counter: number;
+}
 
-class App extends React.Component<AppProps, {}> {
-  state = { counter: 0 };
+class App extends React.Component<AppProps, AppState> {
+  constructor(props: AppProps) {
+    super(props);
+    this.state = { counter: 0 };
+  }
+
+  // state = { counter: 0 };
 
   onIncrement = (): void => {
     this.setState({ counter: this.state.counter + 1 });
@@ -35,5 +39,29 @@ class App extends React.Component<AppProps, {}> {
     );
   }
 }
+
+// function App(props: AppProps): JSX.Element {
+//   const [state, setState] = React.useState<AppState>({ counter: 0 });
+
+//   const onIncrement = (): void => {
+//     setState({ counter: state.counter + 1 });
+//   };
+//   const onDecrement = (): void => {
+//     setState({ counter: state.counter - 1 });
+//   };
+
+//   return (
+//     <div>
+//       <button style={{ color: props.color }} onClick={onIncrement}>
+//         Increment
+//       </button>
+//       <button style={{ color: props.color }} onClick={onDecrement}>
+//         Decrement
+//       </button>
+//       <br />
+//       Counter State: {state.counter}
+//     </div>
+//   );
+// }
 
 export default App;
