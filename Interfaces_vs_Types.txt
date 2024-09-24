@@ -1,0 +1,55 @@
+In TypeScript, both **interfaces** and **types** serve the purpose of defining the structure of objects, but they have distinct characteristics and use cases. Here's a breakdown of their differences:
+
+## Key Differences
+
+### Definition
+- **Interface**: A syntactical contract that defines the structure of an object, including properties and methods. It is primarily used for defining object shapes.
+- **Type**: A more versatile construct that can define not only object shapes but also primitive types, unions, intersections, tuples, and more complex type definitions.
+
+### Extensibility
+- **Interface**: Supports **declaration merging**, allowing multiple declarations with the same name to be merged into a single interface. This makes interfaces extendable and adaptable.
+- **Type**: Cannot be reopened or merged once defined. If you try to declare a type with the same name again, it will raise an error.
+
+### Syntax
+- **Interface**: Uses the `interface` keyword.
+- **Type**: Uses the `type` keyword.
+
+### Flexibility
+- **Interface**: Less flexible than types; primarily focused on object-oriented design.
+- **Type**: More flexible; can represent complex types like unions and intersections.
+
+### Usage with Primitives and Other Types
+- **Interface**: Generally used for defining objects and their methods. Cannot directly represent primitives or union types.
+- **Type**: Can define primitives, unions, intersections, tuples, and more, making it suitable for a wider range of scenarios.
+
+### Implementation
+- **Interface**: Can be implemented by classes. Interfaces are often preferred in scenarios where you need to define contracts for classes.
+- **Type**: Can also be implemented but is less common; it's often used for simpler type definitions or when working with functions.
+
+### Error Handling
+- **Interface**: Provides clearer error messages during development when conflicts arise (e.g., conflicting method signatures).
+- **Type**: May result in less informative error messages due to its more abstract nature.
+
+## When to Use Each
+
+- **Use Interfaces When**:
+  - You need to define the shape of an object or class that will be implemented.
+  - You want to take advantage of declaration merging.
+  - You are working within an object-oriented paradigm.
+
+- **Use Types When**:
+  - You need to create union or intersection types.
+  - You are defining primitive types or tuples.
+  - You require advanced type features like mapped types or conditional types.
+
+In summary, while both interfaces and types can be used to describe object structures in TypeScript, interfaces are generally preferred for defining contracts in object-oriented programming due to their extensibility and clarity. Types offer greater flexibility for defining various data structures and complex type compositions[1][4][5].
+
+Citations:
+[1] https://www.geeksforgeeks.org/what-is-the-difference-between-interface-and-type-in-typescript/
+[2] https://www.typescriptlang.org/play/typescript/language-extensions/types-vs-interfaces.ts.html
+[3] https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript
+[4] https://blog.logrocket.com/types-vs-interfaces-typescript/
+[5] https://blog.bitsrc.io/type-vs-interface-in-typescript-cf3c00bc04ae?gi=1dbaa779816e
+[6] https://www.reddit.com/r/typescript/comments/16vlmmx/interface_vs_type/
+[7] https://www.totaltypescript.com/type-vs-interface-which-should-you-use
+[8] https://www.youtube.com/watch?v=zM9UPcIyyhQ
